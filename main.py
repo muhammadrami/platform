@@ -7,7 +7,7 @@ import pandas as pd
 
 def execute():
     file = pd.read_csv(r'final.csv', header=0)
-    driver = webdriver.Edge(executable_path="msedgedriver.exe")
+    driver = webdriver.Edge(executable_path="msedgedriver")
     url = ('https://visitjordan.gov.jo/travelcars/')
     for i in range(len(file.index)):
         driver.get(url)
@@ -31,8 +31,22 @@ def start():
             execute()
         time.sleep(2)
 
-
+'''
 if __name__ == '__main__':
     execute()
+'''
+if __name__ == '__main__':
+    driver = webdriver.Edge(executable_path="msedgedriver")
+    url = ('https://www.gateway2jordan.gov.jo/transitJO/')
+    driver.get(url)
+    driver.find_element(By.NAME, "txtName").send_keys('jhbksj')
+
+    driver.find_element(By.XPATH, '/html/body/form/section/div/div/div[3]/div[1]/div[4]/div[2]/div[1]/label' ).click()
+    driver.find_element(By.XPATH, '/html/body/form/section/div/div/div[3]/div[1]/div[5]/div[2]/select/option[8]' ).click()
+    driver.find_element(By.XPATH, '/html/body/form/section/div/div/div[3]/div[1]/div[19]/div/label' ).click()
+    driver.find_element(By.NAME,'FileUpload1').send_keys(r'C:\Users\Muhammad\Desktop\pythonProject\muh.jpg')
+
+    time.sleep(20)
+    driver.quit()
 
 
